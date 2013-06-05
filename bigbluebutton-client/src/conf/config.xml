@@ -1,0 +1,142 @@
+<?xml version="1.0" ?>
+<config>
+    <localeversion suppressWarning="false">0.8</localeversion>
+    <version>VERSION</version>
+    <help url="http://192.168.0.189/help.html"/>
+    <porttest host="192.168.0.189" application="video/portTest" timeout="10000"/>    
+    <bwMon server="192.168.0.189" application="video/bwTest"/>
+    <application uri="rtmp://192.168.0.189/bigbluebutton" host="http://192.168.0.189/bigbluebutton/api/enter" />
+    <language userSelectionEnabled="true" />
+    <skinning enabled="true" url="http://192.168.0.189/client/branding/css/BBBDefault.css.swf" />
+    <shortcutKeys showButton="true" />
+    <layout showLogButton="true" showVideoLayout="false" showResetLayout="true" defaultLayout="Default"
+            showToolbar="true" showFooter="true" showHelpButton="true" showLogoutWindow="true" 
+            showLayoutTools="false" showNetworkMonitor="false" />
+            
+		<modules>
+		 
+		<module name="ChatModule" url="http://192.168.0.189/client/ChatModule.swf?v=VERSION" 
+			uri="rtmp://192.168.0.189/bigbluebutton" 
+			dependsOn="UsersModule"	
+			translationOn="false"
+			translationEnabled="false"	
+			privateEnabled="true"  
+			position="top-right"
+			baseTabIndex="701"
+		/>
+
+		<module name="UsersModule" url="http://192.168.0.189/client/UsersModule.swf?v=VERSION" 
+			uri="rtmp://192.168.0.189/bigbluebutton" 
+			allowKickUser="true"
+		/>
+
+		
+		<module name="DeskShareModule" 
+			url="http://192.168.0.189/client/DeskShareModule.swf?v=4105" 
+			uri="rtmp://192.168.0.189/deskShare"
+			showButton="true"
+			autoStart="false"
+			baseTabIndex="101"
+		/>
+		
+		<module name="PhoneModule" url="http://192.168.0.189/client/PhoneModule.swf?v=VERSION" 
+			uri="rtmp://192.168.0.189/sip" 
+			autoJoin="true"
+			skipCheck="false"
+			showButton="true"
+			enabledEchoCancel="true"
+			dependsOn="UsersModule"
+		/>
+
+		<module name="VideoconfModule" url="http://192.168.0.189/client/VideoconfModule.swf?v=VERSION" 
+			uri="rtmp://192.168.0.189/video"
+			dependson = "UsersModule"
+			videoQuality = "100"
+			presenterShareOnly = "false"
+			controlsForPresenter = "false"
+			resolutions = "320x240,640x480,1280x720"
+			autoStart = "false"
+			showButton = "true"
+			showCloseButton = "true"
+			publishWindowVisible = "true"
+			viewerWindowMaxed = "false"
+			viewerWindowLocation = "top"
+			camKeyFrameInterval = "30"
+			camModeFps = "10"
+			camQualityBandwidth = "0"
+			camQualityPicture = "90"
+			smoothVideo="false"
+			applyConvolutionFilter="false"
+			convolutionFilter="-1, 0, -1, 0, 6, 0, -1, 0, -1"
+			filterBias="0"
+			filterDivisor="4"
+			enableH264 = "true"
+			h264Level = "2.1"
+			h264Profile = "main"		
+			displayAvatar = "false"
+			focusTalking = "false"
+			glowColor = "0x4A931D"
+			glowBlurSize = "30.0"	
+		/>
+		
+		<module name="WhiteboardModule" url="http://192.168.0.189/client/WhiteboardModule.swf?v=4105" 
+			uri="rtmp://192.168.0.189/bigbluebutton" 
+			dependsOn="PresentModule"
+			baseTabIndex="601"
+		/>
+
+<!--
+    <module name="PollingModule" url="http://192.168.0.189/client/PollingModule.swf?v=VERSION" 
+      uri="rtmp://192.168.0.189/bigbluebutton" 
+      dependsOn="PresentModule"
+    />
+-->
+    		
+		<module name="PresentModule" url="http://192.168.0.189/client/PresentModule.swf?v=VERSION" 
+			uri="rtmp://192.168.0.189/bigbluebutton" 
+			host="http://192.168.0.189" 
+			showPresentWindow="true"
+			showWindowControls="true"
+			dependsOn="UsersModule"
+			baseTabIndex="501"
+			maxFileSize="30"
+		/>
+
+		<module name="VideodockModule" url="http://192.168.0.189/client/VideodockModule.swf?v=VERSION"
+			uri="rtmp://192.168.0.189/bigbluebutton" 
+			dependsOn="VideoconfModule, UsersModule"
+			autoDock="true"
+			showControls="true"
+			maximizeWindow="false"
+			position="bottom-right"
+			width="172"
+			height="179"
+			layout="smart"
+			oneAlwaysBigger="false"
+			baseTabIndex="401"
+		/>
+		
+		<module name="LayoutModule" url="http://192.168.0.189/client/LayoutModule.swf?v=VERSION"
+			uri="rtmp://192.168.0.189/bigbluebutton"
+			layoutConfig="http://192.168.0.189/client/conf/layout.xml"
+			enableEdit="false"
+		/>
+
+<!--
+    <module name="NotesModule" url="http://192.168.0.189/client/NotesModule.swf?v=VERSION"
+      saveURL="http://192.168.0.189"
+      position="top-left"
+    />
+    
+    <module name="BroadcastModule" url="http://192.168.0.189/client/BroadcastModule.swf?v=VERSION"
+      uri="rtmp://192.168.0.189/bigbluebutton"
+      streamsUri="http://192.168.0.189/streams.xml"
+      position="top-left"
+      showStreams="true"
+      autoPlay="false"
+      dependsOn="UsersModule"
+    />
+-->
+    		
+	</modules>
+</config>
